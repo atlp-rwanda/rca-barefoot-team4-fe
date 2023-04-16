@@ -7,6 +7,18 @@ bin-release/
 # Other files and folders
 .settings/
 node_modules
+/coverage
+cypress/
+/next
+
+# next.js build output
+.next/
+
+# production build output
+dist/
+
+# dotenv environment variables file
+.env
 
 # Executables
 *.swf
