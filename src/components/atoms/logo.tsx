@@ -1,10 +1,19 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
-export default function Logo() {
+export default function Logo({ withText = true }) {
   return (
     <div className="flex">
-        <Image src={'/assets/images/plan-red-logo.png'} width={30} height={30} alt="Logo" />
-        <h4 className="text-sm text-red-default mt-2 ml-1 font-medium">Barefoot Nomad</h4>
-      </div>
-  )
+      <Image
+        src={'/assets/images/plan-red-logo.png'}
+        width={30}
+        height={30}
+        alt="Logo"
+      />
+      {withText ? (
+        <h4 className="ml-1 mt-2 text-sm font-medium text-red-default">
+          Barefoot Nomad
+        </h4>
+      ) : null}
+    </div>
+  );
 }
