@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 export default function RootLayout({
   children,
-}: {children: React.ReactNode}) {
-  return (
-    <section className="">{children}</section>
-  )
+}: {
+  children: React.ReactNode;
+}) {
+  return <main>{children}</main>;
 }
