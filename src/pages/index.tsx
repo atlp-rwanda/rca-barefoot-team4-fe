@@ -1,5 +1,13 @@
+import Navbar from "@/components/Navbar";
+import RootLayout from "@/layouts/layout";
+
 const Index = () => {
-  return <h1>Welcome to barefoot team !</h1>;
+  return (
+    <RootLayout>
+      <Navbar/>
+    </RootLayout>
+  )
+
 };
 
 export default Index;
