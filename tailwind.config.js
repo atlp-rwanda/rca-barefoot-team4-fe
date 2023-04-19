@@ -28,7 +28,7 @@ module.exports = {
           900: '#1a202c',
         },
         red: {
-          'default': '#F20544',
+          default: '#F20544',
         },
         blue: {
           100: '#ebf8ff',
