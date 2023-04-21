@@ -1,5 +1,11 @@
+import RootLayout from '@/layouts/layout';
+
 const Index = () => {
-  return <h1>Welcome to barefoot team !</h1>;
+  return (
+    <RootLayout>
+      <h2>Content</h2>
+    </RootLayout>
+  );
 };
 
 export default Index;
