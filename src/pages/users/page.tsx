@@ -10,7 +10,7 @@ export default function ReactQueryTest() {
     <div>
       <h3>User data</h3>
 
-      <p>{!isLoading ? data.first_name + data.last_name : null}</p>
+      <p>{!isLoading && !error ? data.first_name + data.last_name : null}</p>
     </div>
   );
 }
