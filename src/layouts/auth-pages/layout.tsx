@@ -1,8 +1,6 @@
 import React from 'react';
 
 import Banner from '@/components/atoms/banner';
-import Footer from '@/components/footer';
-import Navbar from '@/components/Navbar';
 
 export default function AuthPagesLayout({
   children,

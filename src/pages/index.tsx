@@ -1,10 +1,10 @@
 import RootLayout from '@/layouts/layout';
 
-import ForgotPasswordPage from './forgot-password';
-import ReactQueryTest from './users/page';
-
 const Index = () => {
-  return <RootLayout></RootLayout>;
+  return (
+    <RootLayout>
+      <h4>Main page</h4>
+    </RootLayout>
+  );
 };
-
 export default Index;
