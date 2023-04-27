@@ -6,7 +6,7 @@ export default function Logo({ withText = true, width = 30, height = 30 }) {
       <Image
         src={'/assets/images/plan-red-logo.png'}
         width={width}
-        height={width}
+        height={height}
         alt="Logo"
       />
       {withText ? (
