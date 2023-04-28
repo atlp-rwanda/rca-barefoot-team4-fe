@@ -10,7 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <main>
-      <section>
+      <section className="h-screen">
         <Navbar />
         {children}
       </section>
