@@ -1,0 +1,71 @@
+@import "../mixin";
+@import "../utilities";
+
+.create-accomodation {
+  @include central-holder;
+  
+  @include respond(phone) {
+    width: 100%;
+  }
+
+  &__form {
+    width: 95%;
+    margin: auto;
+    position: relative;
+    border-radius: 3px;
+    padding: 0 5rem;
+
+    @include respond(phone) {
+      width: 100%;
+    }
+
+    &--double-group {
+      display: flex;
+    }
+
+    &__group {
+      margin: 1rem 0;
+
+      &,
+      .location {
+        position: relative;
+        margin-right: 1rem;
+      }
+
+      &--icon {
+        position: absolute;
+        right: 1rem;
+        top: 3.2rem;
+        font-size: 1.3rem;
+        color: #f20544;
+      }
+
+      &--label {
+        display: flex;
+        margin: 0.5rem 0;
+      }
+      &--input {
+        width: 100%;
+        border: 1px solid #e6e6e6;
+        border-radius: 3px;
+        padding: 0.6rem;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    &--next-btn {
+      position: absolute;
+      right: 0;
+      padding: 1.5rem 6rem;
+      color: #f20544;
+      text-decoration: underline;
+    }
+  }
+}
+
+textarea {
+  width: 75%;
+}
