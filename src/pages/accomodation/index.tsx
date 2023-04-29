@@ -13,9 +13,8 @@ const Index = () => {
     <AssignRooms page={page} setPage={setPage} key={page} />,
   ];
   return (
-    <RootLayout>
-      <div>{componentsList[page]}</div>
-    </RootLayout>
+    // <RootLayout>
+    <div>{componentsList[page]}</div>
   );
 };
 

@@ -78,12 +78,10 @@ const AssignRooms = ({ page, setPage }) => {
               id="location-image"
               className="assign-rooms__form__group__upload--file-input"
             />
-            <div className="">
-              <FaCloudUploadAlt className="assign-rooms__form__group__upload--icon" />
-              <p className="assign-rooms__form__group__upload--text">
-                Click to upload or drag and drop
-              </p>
-            </div>
+            <FaCloudUploadAlt className="assign-rooms__form__group__upload--icon" />
+            <p className="assign-rooms__form__group__upload--text">
+              Click to upload or drag and drop
+            </p>
           </div>
         </div>
 

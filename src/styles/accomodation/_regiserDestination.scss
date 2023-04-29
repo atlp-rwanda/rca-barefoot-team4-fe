@@ -3,10 +3,6 @@
 
 .create-accomodation {
   @include central-holder;
-  
-  @include respond(phone) {
-    width: 100%;
-  }
 
   &__form {
     width: 95%;
@@ -17,14 +13,23 @@
 
     @include respond(phone) {
       width: 100%;
+      padding: 0 3rem;
     }
 
     &--double-group {
       display: flex;
+
+      @include respond(phone){
+        flex-direction: column;
+      }
     }
 
     &__group {
       margin: 1rem 0;
+
+      @include respond(phone){
+        margin: .5rem 0;
+      }
 
       &,
       .location {
@@ -62,6 +67,10 @@
       padding: 1.5rem 6rem;
       color: #f20544;
       text-decoration: underline;
+
+      @include respond(phone){
+        padding: 1rem 4rem;
+      }
     }
   }
 }

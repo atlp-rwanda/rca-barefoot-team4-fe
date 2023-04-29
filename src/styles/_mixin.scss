@@ -4,6 +4,11 @@
   margin: 2rem auto;
   padding: 4rem 0;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+
+  @include respond(phone){
+    width: 95%;
+    margin: auto;
+  }
 }
 
 @mixin respond($breakpoint) {
