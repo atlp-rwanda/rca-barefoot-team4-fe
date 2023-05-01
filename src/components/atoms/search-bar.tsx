@@ -1,6 +1,6 @@
 export default function SearchBar() {
   return (
-    <div className="w-full">
+    <div className="mt-2 w-full md:mt-0">
       <form>
         <div className="flex">
           <div className="relative w-full">

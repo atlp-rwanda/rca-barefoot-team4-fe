@@ -9,8 +9,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main>
-      <section className="h-screen">
+    <main className="w-fit md:w-auto">
+      <section className="h-screen w-auto">
         <Navbar />
         {children}
       </section>
