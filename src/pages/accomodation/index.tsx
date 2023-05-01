@@ -6,11 +6,11 @@ import AssignRooms from './assign-rooms';
 import RegisterDestination from './register-destination';
 
 export interface IAccomodation {
-  destinationName: String;
-  address: String;
-  contact: String;
-  description: String;
-  websiteUrl: String;
+  destinationName: string;
+  address: string;
+  contact: string;
+  description: string;
+  websiteUrl: string;
 }
 
 const Index = () => {
@@ -36,7 +36,7 @@ const Index = () => {
       setPage={setPage}
       key={page}
       accomodationState={accomodationState}
-      setAccomodationState={setAccomodationState}
+      // setAccomodationState={setAccomodationState}
     />,
   ];
   return (

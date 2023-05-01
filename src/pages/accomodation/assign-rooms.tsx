@@ -7,8 +7,8 @@ import type { IAccomodation } from '.';
 
 interface IRoom {
   roomName: String;
-  roomAmount: Number | null | undefined;
-  numberOfRooms: Number | null | undefined;
+  roomAmount: Number | undefined;
+  numberOfRooms: Number | undefined;
 }
 
 const AssignRooms = ({
@@ -16,18 +16,18 @@ const AssignRooms = ({
   setPage,
   accomodationState,
 }: {
-  page: Number;
+  page: number;
   setPage: Dispatch<SetStateAction<number>>;
   accomodationState: IAccomodation;
 }) => {
   const [rooms, setRooms] = useState<IRoom[]>([]);
-  const [newRoom, setNewRoom] = useState<IRoom>({
+  const [newRoom, setNewRoom] = useState({
     roomName: '',
-    roomAmount: null,
-    numberOfRooms: null,
+    roomAmount: undefined,
+    numberOfRooms: undefined,
   });
 
-  function handleChange(e: any) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
     setNewRoom({
       ...newRoom,
@@ -84,11 +84,11 @@ const AssignRooms = ({
             </label>
             <input
               type="text"
-              value={newRoom.roomName}
-              onChange={(e) => handleChange(e)}
               name="roomName"
               id="room-name"
               className="assign-rooms__form__group--input"
+              onChange={(e) => handleChange(e)}
+              value={newRoom.roomName}
             />
           </div>
 
@@ -101,11 +101,11 @@ const AssignRooms = ({
             </label>
             <input
               type="text"
-              value={newRoom.roomAmount}
-              onChange={(e) => handleChange(e)}
               name="roomAmount"
               id="room-amount"
               className="assign-rooms__form__group--input"
+              onChange={(e) => handleChange(e)}
+              value={newRoom.roomAmount}
             />
           </div>
 
@@ -118,11 +118,11 @@ const AssignRooms = ({
             </label>
             <input
               type="text"
-              value={newRoom.numberOfRooms}
-              onChange={(e) => handleChange(e)}
               name="numberOfRooms"
               id="num-rooms"
               className="assign-rooms__form__group--input"
+              onChange={(e) => handleChange(e)}
+              value={newRoom.numberOfRooms}
             />
           </div>
 
@@ -177,7 +177,6 @@ const AssignRooms = ({
       <button
         onClick={() => {
           setPage(page - 1);
-          console.log(accomodationState);
         }}
         className="assign-rooms--back-btn"
       >

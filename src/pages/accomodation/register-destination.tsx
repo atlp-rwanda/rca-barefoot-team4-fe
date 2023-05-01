@@ -12,12 +12,16 @@ const RegisterDestination = ({
   accomodationState,
   setAccomodationState,
 }: {
-  page: Number;
+  page: number;
   setPage: Dispatch<SetStateAction<number>>;
   accomodationState: IAccomodation;
   setAccomodationState: Dispatch<SetStateAction<IAccomodation>>;
 }) => {
-  function handleChange(e: any) {
+  function handleChange(
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) {
     const { value } = e.target;
     setAccomodationState({
       ...accomodationState,
@@ -100,7 +104,7 @@ const RegisterDestination = ({
             value={accomodationState.description}
             onChange={(e) => handleChange(e)}
             name="description"
-            rows="3"
+            // rows="3"
             id="description"
             placeholder="Provide a small description of the accomodation facility"
             className="create-accomodation__form__group--input description"
@@ -127,7 +131,6 @@ const RegisterDestination = ({
         <button
           onClick={() => {
             setPage(page + 1);
-            console.log(accomodationState);
           }}
           className="create-accomodation__form--next-btn"
         >
