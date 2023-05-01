@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react';
-import React, { useState } from 'react';
+import React from 'react';
 import { ImLocation } from 'react-icons/im';
 
 import RequiredMark from '@/components/requiredMark';
