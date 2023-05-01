@@ -10,3 +10,14 @@ export const fetchUserData = async () => {
     throw err;
   }
 };
+
+export const registerAccomodation = async (accomodationData) => {
+  try {
+    const newAccomodation = await axios.post(
+      `http://localhost:3000/api/v1/accomodation`
+    );
+    return newAccomodation;
+  } catch (error: any) {
+    throw error;
+  }
+};

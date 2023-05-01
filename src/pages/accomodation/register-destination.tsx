@@ -1,18 +1,33 @@
+import type { Dispatch, SetStateAction } from 'react';
+import React, { useState } from 'react';
 import { ImLocation } from 'react-icons/im';
 
 import RequiredMark from '@/components/requiredMark';
 
-const RegisterDestination = ({ page, setPage }) => {
-  // const [accomodationState, setAccomodationState] = useState({
-  //   destination_name: '',
-  //   address: '',
-  //   contact: '',
-  //   description: '',
-  //   url: '',
-  // });
+import type { IAccomodation } from '.';
+
+const RegisterDestination = ({
+  page,
+  setPage,
+  accomodationState,
+  setAccomodationState,
+}: {
+  page: Number;
+  setPage: Dispatch<SetStateAction<number>>;
+  accomodationState: IAccomodation;
+  setAccomodationState: Dispatch<SetStateAction<IAccomodation>>;
+}) => {
+  function handleChange(e: any) {
+    const { value } = e.target;
+    setAccomodationState({
+      ...accomodationState,
+      [e.target.name]: value,
+    });
+  }
+
   return (
     <div className="create-accomodation">
-      <form className="create-accomodation__form">
+      <div className="create-accomodation__form">
         <h1 className="form-header">Register Destination</h1>
         <div className="create-accomodation__form__group">
           <label
@@ -24,7 +39,9 @@ const RegisterDestination = ({ page, setPage }) => {
           </label>
           <input
             type="text"
-            name="destination_name"
+            value={accomodationState.destinationName}
+            onChange={(e) => handleChange(e)}
+            name="destinationName"
             placeholder="Provide your destination"
             id="dest-name"
             className="create-accomodation__form__group--input"
@@ -42,6 +59,8 @@ const RegisterDestination = ({ page, setPage }) => {
             </label>
             <input
               type="text"
+              value={accomodationState.address}
+              onChange={(e) => handleChange(e)}
               name="address"
               placeholder="Provide the address"
               id="address"
@@ -60,6 +79,8 @@ const RegisterDestination = ({ page, setPage }) => {
             </label>
             <input
               type="text"
+              value={accomodationState.contact}
+              onChange={(e) => handleChange(e)}
               name="contact"
               placeholder="Provide your Email or Phone number"
               id="contact"
@@ -76,6 +97,8 @@ const RegisterDestination = ({ page, setPage }) => {
             <RequiredMark />
           </label>
           <textarea
+            value={accomodationState.description}
+            onChange={(e) => handleChange(e)}
             name="description"
             rows="3"
             id="description"
@@ -93,19 +116,24 @@ const RegisterDestination = ({ page, setPage }) => {
           </label>
           <input
             type="text"
-            name="url"
+            value={accomodationState.websiteUrl}
+            onChange={(e) => handleChange(e)}
+            name="websiteUrl"
             placeholder="Provide a url to your website or info"
             id="dest-url"
             className="create-accomodation__form__group--input"
           />
         </div>
         <button
-          onClick={() => setPage(page + 1)}
+          onClick={() => {
+            setPage(page + 1);
+            console.log(accomodationState);
+          }}
           className="create-accomodation__form--next-btn"
         >
           Next
         </button>
-      </form>
+      </div>
     </div>
   );
 };

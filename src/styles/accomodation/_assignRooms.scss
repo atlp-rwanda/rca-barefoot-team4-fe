@@ -78,7 +78,7 @@
           position: absolute;
           top: 20%;
           z-index: -10;
-          color: rgb(157, 157, 157);
+          color: rgb(217, 217, 217);
           cursor: pointer;
         }
 
@@ -128,5 +128,27 @@
     height: 5%;
     color: #f20544;
     cursor: pointer;
+  }
+
+  &__current-rooms {
+    width: 100%;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+      background-color: #f6f6f6;
+      border-radius: 3px;
+      padding: 0.4rem 1rem;
+      margin: .5rem .5rem;
+
+      @include respond(phone){
+        padding: 0.4rem .5rem;
+      }
+
+      &--name {
+        font-weight: 600;
+      }
+    }
   }
 }
