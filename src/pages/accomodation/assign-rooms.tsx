@@ -15,12 +15,10 @@ const AssignRooms = ({
   page,
   setPage,
   accomodationState,
-  setAccomodationState,
 }: {
   page: Number;
   setPage: Dispatch<SetStateAction<number>>;
   accomodationState: IAccomodation;
-  setAccomodationState: Dispatch<SetStateAction<IAccomodation>>;
 }) => {
   const [rooms, setRooms] = useState<IRoom[]>([]);
   const [newRoom, setNewRoom] = useState<IRoom>({
