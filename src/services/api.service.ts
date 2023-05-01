@@ -11,13 +11,13 @@ export const fetchUserData = async () => {
   }
 };
 
-export const registerAccomodation = async (accomodationData) => {
-  try {
-    const newAccomodation = await axios.post(
-      `http://localhost:3000/api/v1/accomodation`
-    );
-    return newAccomodation;
-  } catch (error: any) {
-    throw error;
-  }
-};
+// export const registerAccomodation = async (accomodationData) => {
+//   try {
+//     const newAccomodation = await axios.post(
+//       `http://localhost:3000/api/v1/accomodation`
+//     );
+//     return newAccomodation;
+//   } catch (error: any) {
+//     throw error;
+//   }
+// };
