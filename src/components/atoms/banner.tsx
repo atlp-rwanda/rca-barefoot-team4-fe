@@ -10,6 +10,7 @@ export default function Banner(props: Props) {
       {props.position === 'top' ? (
         <div className="absolute right-0">
           <Image
+            className="hidden md:inline"
             src={'/assets/images/banner-top.png'}
             width={255}
             height={255}
@@ -19,6 +20,7 @@ export default function Banner(props: Props) {
       ) : (
         <div className="absolute bottom-0">
           <Image
+            className="hidden md:inline"
             src={'/assets/images/banner-bottom.png'}
             width={255}
             height={255}
