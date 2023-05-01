@@ -38,14 +38,11 @@ const AssignRooms = ({
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(
-        `http://localhost:3000/api/v1/accomodation`,
-        {
-          ...accomodationState,
-          centerImage: 'akagera.png',
-          rooms,
-        }
-      );
+      await axios.post(`http://localhost:3000/api/v1/accomodation`, {
+        ...accomodationState,
+        centerImage: 'akagera.png',
+        rooms,
+      });
     } catch (err: any) {
       throw err;
     }
