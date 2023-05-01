@@ -1,6 +1,7 @@
 import '../styles/global.css';
-import '../styles/accomodation/_regiserDestination.scss';
-import '../styles/accomodation/_assignRooms.scss';
+// import '../styles/accomodation/_regiserDestination.scss';
+// import '../styles/accomodation/_assignRooms.scss';
+import '../styles/globals.scss';
 
 import type { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from 'react-query';
