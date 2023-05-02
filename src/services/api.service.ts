@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import type { TRegisterUser } from './types';
+import type { TLogin, TRegisterUser } from './types';
 
 const headers = { 'Content-type': 'application/json' };
 const BASE_URL: string =
@@ -18,8 +18,14 @@ export const fetchUserData = async (body: TRegisterUser) => {
 };
 
 export const registerUser = async (body: TRegisterUser) => {
+  return axios.post(`${BASE_URL}/auth/register`, body, {
+    headers,
+  });
+};
+
+export const loginUser = async (body: TLogin) => {
   try {
-    const { data } = await axios.post(`${BASE_URL}/auth/register`, body, {
+    const { data } = await axios.post(`${BASE_URL}/auth/login`, body, {
       headers,
     });
     return data;

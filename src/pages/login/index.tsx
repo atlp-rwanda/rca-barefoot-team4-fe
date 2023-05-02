@@ -6,24 +6,20 @@ import { useMutation } from 'react-query';
 import { Alert } from '@/components/Alert';
 import Logo from '@/components/atoms/logo';
 import AuthPagesLayout from '@/layouts/auth-pages/layout';
-import { registerUser } from '@/services/api.service';
 
-import type { TRegisterUser } from '../../services/types';
+import { loginUser } from '../../services/api.service';
+import type { TLogin } from '../../services/types';
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const router = useRouter();
-  const mutation: any = useMutation((obj: TRegisterUser) => {
-    return registerUser(obj);
-  }, {});
+  const mutation: any = useMutation((obj: TLogin) => {
+    return loginUser(obj);
+  });
 
   const [alert, setAlert] = useState(true);
-  const [form, setForm] = useState<TRegisterUser>({
-    firstName: '',
-    lastName: '',
-    role: 'USER',
+  const [form, setForm] = useState<TLogin>({
     email: '',
     password: '',
-    passwordConfirm: '',
   });
 
   const handleChange = (e: any) => {
@@ -34,11 +30,11 @@ export default function LoginPage() {
   const closeAlert = () => {
     setAlert(false);
   };
-  const register = async () => {
+  const login = async () => {
     setAlert(true);
     try {
       await mutation.mutateAsync(form);
-      router.push('/login');
+      router.push('/');
     } catch (error) {
       console.error(error);
     }
@@ -46,8 +42,8 @@ export default function LoginPage() {
 
   return (
     <AuthPagesLayout>
-      <div className="flex h-screen items-center justify-center">
-        <div>
+      <div className="w-/12 flex h-screen items-center justify-center">
+        <div className="w-4/12">
           <div className="flex justify-center">
             <Logo withText={false} width={125} height={125} />
           </div>
@@ -57,13 +53,13 @@ export default function LoginPage() {
               handleClose={closeAlert}
               message={
                 mutation.isError
-                  ? `${mutation.error.response.data.errors[0].message}`
+                  ? `${mutation.response.data.errors[0].message}`
                   : ''
               }
             />
           ) : null}
           <h4 className="mb-5 mt-8 text-center font-medium uppercase text-red-default">
-            Register
+            Login
           </h4>
           <form className="px-8 md:px-0">
             <div className="mt-2">
@@ -77,58 +73,26 @@ export default function LoginPage() {
                 required
               />
             </div>
-
-            <div className="mt-2 flex">
-              <input
-                type="text"
-                value={form.firstName}
-                onChange={handleChange}
-                name="firstName"
-                placeholder="First name"
-                className="mr-5 block w-72 border border-[#838383] p-2.5 text-xs text-[#838383] focus:border-slate-800 focus:outline-none"
-                required
-              />
-
-              <input
-                type="text"
-                value={form.lastName}
-                onChange={handleChange}
-                name="lastName"
-                placeholder="Last name"
-                className="block w-72 border border-[#838383] p-2.5 text-xs text-[#838383] focus:border-slate-800 focus:outline-none"
-                required
-              />
-            </div>
-
-            <div className="mt-2 flex">
+            <div className="mt-2">
               <input
                 type="password"
                 value={form.password}
                 onChange={handleChange}
                 name="password"
                 placeholder="Password"
-                className="mr-5 block w-72 border border-[#838383] p-2.5 text-xs text-[#838383] focus:border-slate-800 focus:outline-none"
-                required
-              />
-
-              <input
-                type="password"
-                value={form.passwordConfirm}
-                onChange={handleChange}
-                name="passwordConfirm"
-                placeholder="Confirm Password"
-                className="block w-72 border border-[#838383] p-2.5 text-xs text-[#838383] focus:border-slate-800 focus:outline-none"
+                className="block w-full border border-[#838383] p-2.5 text-xs text-[#838383] focus:border-slate-800 focus:outline-none"
                 required
               />
             </div>
+
             <div className="mt-8">
               <button
                 disabled={mutation.isLoading}
                 type="button"
-                onClick={register}
+                onClick={login}
                 className="w-full rounded-3xl bg-red-default p-2.5 text-sm uppercase text-white disabled:bg-[#e45f5f]"
               >
-                Register
+                Login
               </button>
               <p className="mt-2 text-center text-xs text-slate-600">
                 Already Have an account?{' '}

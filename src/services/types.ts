@@ -6,3 +6,8 @@ export type TRegisterUser = {
   password: string;
   passwordConfirm: string;
 };
+
+export type TLogin = {
+  email: string;
+  password: string;
+};
