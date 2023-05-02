@@ -94,10 +94,10 @@ const RegisterDestination = ({
             value={accomodationState.description}
             onChange={(e) => handleChange(e)}
             name="description"
-            // rows="3"
+            style={{ height: '100px' }}
             id="description"
             placeholder="Provide a small description of the accomodation facility"
-            className="h-[60%] w-[75%] rounded-[5px] border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
+            className="h-[60%] w-[75%] rounded-[5px] border-x-[1px] border-y-[2px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
           ></textarea>
         </div>
 
