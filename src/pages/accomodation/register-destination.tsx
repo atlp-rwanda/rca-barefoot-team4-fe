@@ -35,7 +35,7 @@ const RegisterDestination = ({
         <h1 className="pb-[1rem] pl-0 pr-[1rem] pt-[2rem] text-center text-[1.5rem] font-[500]">
           Register Destination
         </h1>
-        <div className="mx-0 my-[1rem]">
+        {/* <div className="mx-0 my-[1rem]">
           <label className="mx-0 my-[0.5rem] flex" htmlFor="dest-name">
             Destination name
             <RequiredMark />
@@ -49,7 +49,7 @@ const RegisterDestination = ({
             id="dest-name"
             className="w-full rounded-[5px] border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
           />
-        </div>
+        </div> */}
 
         <div className="flex flex-col items-center sm:flex-row">
           <div className="relative mr-[1rem]">
@@ -119,7 +119,7 @@ const RegisterDestination = ({
           onClick={() => {
             setPage(page + 1);
           }}
-          className="absolute right-0 px-[6rem] py-[1.5rem] text-[#f20544] underline"
+          className="absolute right-0 px-[5rem] py-[1.5rem] text-[#f20544] underline"
         >
           Next
         </button>
