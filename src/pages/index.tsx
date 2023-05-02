@@ -1,14 +1,10 @@
 import RootLayout from '@/layouts/layout';
 
-import ReactQueryTest from './users/page';
-
 const Index = () => {
   return (
     <RootLayout>
-      <h2>Content</h2>
-      <ReactQueryTest />
+      <h4>Main page</h4>
     </RootLayout>
   );
 };
-
 export default Index;
