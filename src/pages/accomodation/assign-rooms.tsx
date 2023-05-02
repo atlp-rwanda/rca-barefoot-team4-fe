@@ -86,7 +86,7 @@ const AssignRooms = ({
               type="text"
               name="roomName"
               id="room-name"
-              className="w-full rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none "
+              className="w-full rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
               onChange={(e) => handleChange(e)}
               value={newRoom.roomName}
             />

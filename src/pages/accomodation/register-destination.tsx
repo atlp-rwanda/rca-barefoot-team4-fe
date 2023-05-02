@@ -31,25 +31,25 @@ const RegisterDestination = ({
 
   return (
     <div className="relative mx-auto my-[2rem] w-[40%] px-0 py-[4rem] text-[#3F3F3F] shadow-md">
-      <div className="relative m-auto w-[90%] rounded-sm px-[1rem] py-0 sm:px-[5rem]">
+      <form className="relative m-auto w-[90%] rounded-sm px-[1rem] py-0 sm:px-[5rem]">
         <h1 className="pb-[1rem] pl-0 pr-[1rem] pt-[2rem] text-center text-[1.5rem] font-[500]">
           Register Destination
         </h1>
-        {/* <div className="mx-0 my-[1rem]">
+        <div className="mx-0 my-[1rem]">
           <label className="mx-0 my-[0.5rem] flex" htmlFor="dest-name">
             Destination name
             <RequiredMark />
           </label>
           <input
             type="text"
-            value={accomodationState.destinationName}
+            value={accomodationState?.destinationName}
             onChange={(e) => handleChange(e)}
             name="destinationName"
             placeholder="Provide your destination"
             id="dest-name"
             className="w-full rounded-[5px] border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
           />
-        </div> */}
+        </div>
 
         <div className="flex flex-col items-center sm:flex-row">
           <div className="relative mr-[1rem]">
@@ -59,7 +59,7 @@ const RegisterDestination = ({
             </label>
             <input
               type="text"
-              value={accomodationState.address}
+              value={accomodationState?.address}
               onChange={(e) => handleChange(e)}
               name="address"
               placeholder="Provide the address"
@@ -76,7 +76,7 @@ const RegisterDestination = ({
             </label>
             <input
               type="text"
-              value={accomodationState.contact}
+              value={accomodationState?.contact}
               onChange={(e) => handleChange(e)}
               name="contact"
               placeholder="Provide your Email or Phone number"
@@ -91,7 +91,7 @@ const RegisterDestination = ({
             <RequiredMark />
           </label>
           <textarea
-            value={accomodationState.description}
+            value={accomodationState?.description}
             onChange={(e) => handleChange(e)}
             name="description"
             style={{ height: '100px' }}
@@ -107,7 +107,7 @@ const RegisterDestination = ({
           </label>
           <input
             type="text"
-            value={accomodationState.websiteUrl}
+            value={accomodationState?.websiteUrl}
             onChange={(e) => handleChange(e)}
             name="websiteUrl"
             placeholder="Provide a url to your website or info"
@@ -123,7 +123,7 @@ const RegisterDestination = ({
         >
           Next
         </button>
-      </div>
+      </form>
     </div>
   );
 };

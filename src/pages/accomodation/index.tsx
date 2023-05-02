@@ -36,7 +36,6 @@ const Index = () => {
       setPage={setPage}
       key={page}
       accomodationState={accomodationState}
-      // setAccomodationState={setAccomodationState}
     />,
   ];
   return (
