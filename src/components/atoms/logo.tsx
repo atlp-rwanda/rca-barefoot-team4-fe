@@ -1,12 +1,12 @@
 import Image from 'next/image';
 
-export default function Logo({ withText = true }) {
+export default function Logo({ withText = true, width = 30, height = 30 }) {
   return (
     <div className="flex">
       <Image
         src={'/assets/images/plan-red-logo.png'}
-        width={30}
-        height={30}
+        width={width}
+        height={height}
         alt="Logo"
       />
       {withText ? (

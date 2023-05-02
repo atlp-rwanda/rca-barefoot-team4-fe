@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#FCDDEC]">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-        <div className="flex justify-between">
+        <div className="justify-between md:flex">
           <div className="mb-6 flex flex-col items-center justify-between md:mb-0">
             <Logo withText={false} />
             <p className="text-sm font-medium text-red-default">
@@ -12,7 +12,7 @@ const Footer = () => {
             </p>
           </div>
           <div className="">
-            <h2 className="mb-6 text-sm font-semibold uppercase text-red-default">
+            <h2 className="text-sm font-semibold uppercase text-red-default md:mb-6">
               About Us
             </h2>
             <p className="w-96 text-xs font-light text-red-default">
@@ -22,12 +22,12 @@ const Footer = () => {
               operations.
             </p>
           </div>
-          <div className="">
-            <h2 className="mb-6 text-sm font-semibold uppercase text-red-default">
+          <div className="mt-5">
+            <h2 className=" text-sm font-semibold uppercase text-red-default md:mb-6">
               Contact Us
             </h2>
             <ul className="text-xs text-red-default">
-              <li className="mb-3 flex">
+              <li className="flex md:mb-3">
                 <span className="mr-2">
                   <svg
                     id="Layer_1"
@@ -72,10 +72,10 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h2 className="mb-5 text-sm font-semibold uppercase text-red-default">
+            <h2 className="text-sm font-semibold uppercase text-red-default md:mb-5">
               Newsletter
             </h2>
-            <h4 className="mb-6 text-sm font-normal uppercase text-red-default">
+            <h4 className="text-xs font-normal uppercase text-red-default md:mb-6 md:text-sm">
               Subscribe to our Newsletter
             </h4>
             <div className="relative w-full">

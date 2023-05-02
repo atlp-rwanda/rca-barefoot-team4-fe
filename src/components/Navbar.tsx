@@ -4,7 +4,7 @@ import SearchBar from './atoms/search-bar';
 
 const Navbar = () => {
   return (
-    <div className="mb-0 flex bg-white px-20 py-2 shadow-md">
+    <div className="mb-0 w-full bg-white p-4 shadow-md md:flex md:px-20 md:py-2">
       <div className="flex-1">
         <Logo />
       </div>
