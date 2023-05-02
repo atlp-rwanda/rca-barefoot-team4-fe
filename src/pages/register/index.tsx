@@ -14,7 +14,7 @@ export default function ResetPasswordPage() {
     return registerUser(obj);
   });
 
-  const [alert, setAlert] = useState(false);
+  const [alert, setAlert] = useState(true);
   const [form, setForm] = useState<TRegisterUser>({
     firstName: '',
     lastName: '',
@@ -33,6 +33,7 @@ export default function ResetPasswordPage() {
     setAlert(false);
   };
   const register = async () => {
+    setAlert(true);
     mutation.mutate(form);
   };
 
@@ -43,7 +44,7 @@ export default function ResetPasswordPage() {
           <div className="flex justify-center">
             <Logo withText={false} width={125} height={125} />
           </div>
-          {mutation.isError ? (
+          {mutation.isError && alert ? (
             <Alert
               success={!mutation.isError}
               handleClose={closeAlert}
