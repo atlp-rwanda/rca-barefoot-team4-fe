@@ -47,11 +47,11 @@ const RegisterDestination = ({
             name="destinationName"
             placeholder="Provide your destination"
             id="dest-name"
-            className="w-full rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
+            className="w-full rounded-[5px] border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
           />
         </div>
 
-        <div className="flex flex-col sm:flex-row">
+        <div className="flex flex-col items-center sm:flex-row">
           <div className="relative mr-[1rem]">
             <label className="mx-0 my-[0.5rem] flex" htmlFor="address">
               Address
@@ -64,7 +64,7 @@ const RegisterDestination = ({
               name="address"
               placeholder="Provide the address"
               id="address"
-              className="w-full rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
+              className="w-full rounded-[5px] border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
             />
             <ImLocation className="absolute right-[1rem] top-[3.2rem] text-[1.3rem] text-[#f20544]" />
           </div>
@@ -81,7 +81,7 @@ const RegisterDestination = ({
               name="contact"
               placeholder="Provide your Email or Phone number"
               id="contact"
-              className="w-full rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
+              className="w-full rounded-[5px] border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
             />
           </div>
         </div>
@@ -97,7 +97,7 @@ const RegisterDestination = ({
             // rows="3"
             id="description"
             placeholder="Provide a small description of the accomodation facility"
-            className="h-[60%] w-[75%] rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
+            className="h-[60%] w-[75%] rounded-[5px] border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
           ></textarea>
         </div>
 
@@ -112,7 +112,7 @@ const RegisterDestination = ({
             name="websiteUrl"
             placeholder="Provide a url to your website or info"
             id="dest-url"
-            className="w-full rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
+            className="w-full rounded-[5px] border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
           />
         </div>
         <button
