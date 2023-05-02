@@ -1,16 +1,20 @@
 import Link from 'next/link';
 import { useState } from 'react';
+import { useMutation } from 'react-query';
 
 import { Alert } from '@/components/Alert';
 import Logo from '@/components/atoms/logo';
 import AuthPagesLayout from '@/layouts/auth-pages/layout';
 import { registerUser } from '@/services/api.service';
-import type { TRegisterUser } from '@/services/types';
+
+import type { TRegisterUser } from '../../services/types';
 
 export default function ResetPasswordPage() {
-  const [response, setResponse] = useState<any>(null);
-  const [alert, setAlert] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const mutation: any = useMutation((obj: TRegisterUser) => {
+    return registerUser(obj);
+  });
+
+  const [alert, setAlert] = useState(false);
   const [form, setForm] = useState<TRegisterUser>({
     firstName: '',
     lastName: '',
@@ -27,30 +31,9 @@ export default function ResetPasswordPage() {
 
   const closeAlert = () => {
     setAlert(false);
-    setResponse(null);
   };
   const register = async () => {
-    setLoading(true);
-    try {
-      const res = await registerUser(form);
-      console.log(res);
-      setLoading(false);
-      if (!res.success) {
-        setAlert(true);
-        res.message = `${res?.message}: ${res?.error}`;
-        setResponse(res);
-      } else {
-        console.log(res);
-        res.message = `Token bought: ${res.data.token}`;
-        setAlert(true);
-        setResponse(res);
-      }
-    } catch (e) {
-      setLoading(false);
-      setAlert(true);
-      console.log(e);
-      setResponse(e);
-    }
+    mutation.mutate(form);
   };
 
   return (
@@ -60,11 +43,11 @@ export default function ResetPasswordPage() {
           <div className="flex justify-center">
             <Logo withText={false} width={125} height={125} />
           </div>
-          {alert ? (
+          {mutation.isError ? (
             <Alert
-              success={response?.success}
+              success={!mutation.isError}
               handleClose={closeAlert}
-              message={`${response?.message}`}
+              message={mutation.isError ? `${mutation.error.message}` : ''}
             />
           ) : null}
           <h4 className="mb-5 mt-8 text-center font-medium uppercase text-red-default">
@@ -128,7 +111,7 @@ export default function ResetPasswordPage() {
             </div>
             <div className="mt-8">
               <button
-                disabled={loading}
+                disabled={mutation.isLoading}
                 type="button"
                 onClick={register}
                 className="w-full rounded-3xl bg-red-default p-2.5 text-sm uppercase text-white disabled:bg-[#e45f5f]"
