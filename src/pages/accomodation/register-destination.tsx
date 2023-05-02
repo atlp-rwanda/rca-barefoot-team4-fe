@@ -97,7 +97,7 @@ const RegisterDestination = ({
             // rows="3"
             id="description"
             placeholder="Provide a small description of the accomodation facility"
-            className="w-full rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
+            className="h-[60%] w-[75%] rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
           ></textarea>
         </div>
 
