@@ -32,17 +32,14 @@ export default function RegisterPage() {
   };
   const login = async () => {
     setAlert(true);
-    try {
-      await mutation.mutateAsync(form);
-      router.push('/');
-    } catch (error) {
-      console.error(error);
-    }
+    const res = await mutation.mutateAsync(form);
+    localStorage.setItem('auth-token', res.accessToken);
+    router.push('/');
   };
 
   return (
     <AuthPagesLayout>
-      <div className="w-/12 flex h-screen items-center justify-center">
+      <div className="flex h-screen items-center justify-center">
         <div className="w-4/12">
           <div className="flex justify-center">
             <Logo withText={false} width={125} height={125} />
@@ -53,7 +50,7 @@ export default function RegisterPage() {
               handleClose={closeAlert}
               message={
                 mutation.isError
-                  ? `${mutation.response.data.errors[0].message}`
+                  ? `${mutation.error.response.data.errors[0].message}`
                   : ''
               }
             />
@@ -95,10 +92,10 @@ export default function RegisterPage() {
                 Login
               </button>
               <p className="mt-2 text-center text-xs text-slate-600">
-                Already Have an account?{' '}
+                Don&apos;t have an account ?
                 <span className="text-red-default">
-                  <Link className="text-red-default" href={'/login'}>
-                    Login
+                  <Link className="text-red-default" href={'/register'}>
+                    Register
                   </Link>
                 </span>
               </p>
