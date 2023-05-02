@@ -30,14 +30,13 @@ const RegisterDestination = ({
   }
 
   return (
-    <div className="create-accomodation">
-      <div className="create-accomodation__form">
-        <h1 className="form-header">Register Destination</h1>
-        <div className="create-accomodation__form__group">
-          <label
-            className="create-accomodation__form__group--label"
-            htmlFor="dest-name"
-          >
+    <div className="relative mx-auto my-[2rem] w-[40%] px-0 py-[4rem] text-[#3F3F3F] shadow-md">
+      <div className="relative m-auto w-[90%] rounded-sm px-[1rem] py-0 sm:px-[5rem]">
+        <h1 className="pb-[1rem] pl-0 pr-[1rem] pt-[2rem] text-center text-[1.5rem] font-[500]">
+          Register Destination
+        </h1>
+        <div className="mx-0 my-[1rem]">
+          <label className="mx-0 my-[0.5rem] flex" htmlFor="dest-name">
             Destination name
             <RequiredMark />
           </label>
@@ -48,16 +47,13 @@ const RegisterDestination = ({
             name="destinationName"
             placeholder="Provide your destination"
             id="dest-name"
-            className="create-accomodation__form__group--input"
+            className="w-full rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
           />
         </div>
 
-        <div className="create-accomodation__form--double-group">
-          <div className="create-accomodation__form__group location">
-            <label
-              className="create-accomodation__form__group--label"
-              htmlFor="address"
-            >
+        <div className="flex flex-col sm:flex-row">
+          <div className="relative mr-[1rem]">
+            <label className="mx-0 my-[0.5rem] flex" htmlFor="address">
               Address
               <RequiredMark />
             </label>
@@ -68,16 +64,13 @@ const RegisterDestination = ({
               name="address"
               placeholder="Provide the address"
               id="address"
-              className="create-accomodation__form__group--input"
+              className="w-full rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
             />
-            <ImLocation className="create-accomodation__form__group--icon" />
+            <ImLocation className="absolute right-[1rem] top-[3.2rem] text-[1.3rem] text-[#f20544]" />
           </div>
 
-          <div className="create-accomodation__form__group">
-            <label
-              className="create-accomodation__form__group--label"
-              htmlFor="contact"
-            >
+          <div className="mx-0 my-[1rem]">
+            <label className="mx-0 my-[0.5rem] flex" htmlFor="contact">
               Contact
               <RequiredMark />
             </label>
@@ -88,15 +81,12 @@ const RegisterDestination = ({
               name="contact"
               placeholder="Provide your Email or Phone number"
               id="contact"
-              className="create-accomodation__form__group--input"
+              className="w-full rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
             />
           </div>
         </div>
-        <div className="create-accomodation__form__group">
-          <label
-            className="create-accomodation__form__group--label"
-            htmlFor="description"
-          >
+        <div className="mx-0 my-[1rem]">
+          <label className="mx-0 my-[0.5rem] flex" htmlFor="description">
             Description
             <RequiredMark />
           </label>
@@ -107,15 +97,12 @@ const RegisterDestination = ({
             // rows="3"
             id="description"
             placeholder="Provide a small description of the accomodation facility"
-            className="create-accomodation__form__group--input description"
+            className="w-full rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
           ></textarea>
         </div>
 
-        <div className="create-accomodation__form__group">
-          <label
-            className="create-accomodation__form__group--label"
-            htmlFor="dest-url"
-          >
+        <div className="mx-0 my-[1rem]">
+          <label className="mx-0 my-[0.5rem] flex" htmlFor="dest-url">
             Url
           </label>
           <input
@@ -125,14 +112,14 @@ const RegisterDestination = ({
             name="websiteUrl"
             placeholder="Provide a url to your website or info"
             id="dest-url"
-            className="create-accomodation__form__group--input"
+            className="w-full rounded-sm border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
           />
         </div>
         <button
           onClick={() => {
             setPage(page + 1);
           }}
-          className="create-accomodation__form--next-btn"
+          className="absolute right-0 px-[6rem] py-[1.5rem] text-[#f20544] underline"
         >
           Next
         </button>
