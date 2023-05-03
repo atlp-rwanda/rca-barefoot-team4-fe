@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import type { Dispatch, SetStateAction } from 'react';
 import React, { useState } from 'react';
@@ -96,13 +95,13 @@ const AssignRooms = ({
     // e.preventDefault();
     setAlert(true);
 
-    const fkk: ICombined = {
+    const dataToBeSent: ICombined = {
       ...accomodationState,
       rooms,
       centerImage,
     };
 
-    await mutation.mutateAsync(fkk);
+    await mutation.mutateAsync(dataToBeSent);
     router.push('/');
   };
 
