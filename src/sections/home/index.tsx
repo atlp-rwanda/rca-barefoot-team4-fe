@@ -139,27 +139,38 @@ const Index = () => {
 
                   {/* time frame */}
                   <div className="flex gap-5 text-xs">
-                    <div className="flex w-full rounded-full border-2 border-gray-200 bg-white">
-                      <input
-                        type="date"
-                        className="
-                   rounded-full px-5
-                   py-4
-                   outline-none
-                  "
-                        placeholder="Where are you going? text-sm"
-                      />
+                    <div className="w-full space-y-2">
+                      <label htmlFor="" className="block text-sm text-gray-600">
+                        From
+                      </label>
+                      <div className="flex w-full rounded-full border-2 border-gray-200 bg-white">
+                        <input
+                          type="date"
+                          className="
+                            rounded-full px-5
+                            py-4
+                            outline-none
+                            "
+                          placeholder="Where are you going? text-sm"
+                        />
+                      </div>
                     </div>
-                    <div className="flex w-full rounded-full border-2 border-gray-200 bg-white">
-                      <input
-                        type="date"
-                        className="
-                   rounded-full px-5
-                   py-4
-                   outline-none
-                  "
-                        placeholder="Where are you going? text-sm"
-                      />
+
+                    <div className="w-full space-y-2">
+                      <label htmlFor="" className="block text-sm text-gray-600">
+                        To
+                      </label>
+                      <div className="flex w-full rounded-full border-2 border-gray-200 bg-white">
+                        <input
+                          type="date"
+                          className="
+      rounded-full px-5
+      py-4
+      outline-none
+      "
+                          placeholder="Where are you going? text-sm"
+                        />
+                      </div>
                     </div>
                   </div>
 
