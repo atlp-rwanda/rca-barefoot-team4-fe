@@ -30,7 +30,7 @@ const RegisterDestination = ({
   }
 
   return (
-    <div className="relative mx-auto my-[2rem] w-[40%] px-0 py-[4rem] text-[#3F3F3F] shadow-md">
+    <div className="relative mx-auto my-[2rem] w-[95%] px-0 py-[4rem] text-[#3F3F3F] shadow-md sm:w-[45%]">
       <form className="relative m-auto w-[90%] rounded-sm px-[1rem] py-0 sm:px-[5rem]">
         <h1 className="pb-[1rem] pl-0 pr-[1rem] pt-[2rem] text-center text-[1.5rem] font-[500]">
           Register Destination
@@ -48,11 +48,12 @@ const RegisterDestination = ({
             placeholder="Provide your destination"
             id="dest-name"
             className="w-full rounded-[5px] border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
+            required
           />
         </div>
 
-        <div className="flex flex-col items-center sm:flex-row">
-          <div className="relative mr-[1rem]">
+        <div className="flex flex-col sm:flex-row sm:items-center">
+          <div className="relative sm:mr-[1rem]">
             <label className="mx-0 my-[0.5rem] flex" htmlFor="address">
               Address
               <RequiredMark />
@@ -65,8 +66,9 @@ const RegisterDestination = ({
               placeholder="Provide the address"
               id="address"
               className="w-full rounded-[5px] border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
+              required
             />
-            <ImLocation className="absolute right-[1rem] top-[3.2rem] text-[1.3rem] text-[#f20544]" />
+            <ImLocation className="absolute right-[1rem] top-[3rem] text-[1.3rem] text-[#f20544]" />
           </div>
 
           <div className="mx-0 my-[1rem]">
@@ -82,6 +84,7 @@ const RegisterDestination = ({
               placeholder="Provide your Email or Phone number"
               id="contact"
               className="w-full rounded-[5px] border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
+              required
             />
           </div>
         </div>
@@ -97,7 +100,8 @@ const RegisterDestination = ({
             style={{ height: '100px' }}
             id="description"
             placeholder="Provide a small description of the accomodation facility"
-            className="h-[60%] w-[75%] rounded-[5px] border-x-[1px] border-y-[2px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
+            className="h-[60%] w-[100%] rounded-[5px] border-x-[1px] border-y-[2px] border-[#e6e6e6] p-[0.3rem] focus:outline-none sm:w-[75%]"
+            required
           ></textarea>
         </div>
 
@@ -113,13 +117,14 @@ const RegisterDestination = ({
             placeholder="Provide a url to your website or info"
             id="dest-url"
             className="w-full rounded-[5px] border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
+            required
           />
         </div>
         <button
           onClick={() => {
             setPage(page + 1);
           }}
-          className="absolute right-0 px-[5rem] py-[1.5rem] text-[#f20544] underline"
+          className="absolute right-0 px-[1rem] py-[1.5rem] text-[#f20544] underline sm:px-[5rem]"
         >
           Next
         </button>

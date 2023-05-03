@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import RootLayout from '@/layouts/layout';
+import AccomodationLayout from '@/layouts/accomodation/layout';
 
 import AssignRooms from './assign-rooms';
 import RegisterDestination from './register-destination';
@@ -39,9 +39,9 @@ const Index = () => {
     />,
   ];
   return (
-    <RootLayout>
+    <AccomodationLayout>
       <div>{componentsList[page]}</div>
-    </RootLayout>
+    </AccomodationLayout>
   );
 };
 
