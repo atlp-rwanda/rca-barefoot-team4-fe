@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-import type { IAccomodation } from '@/pages/accomodation';
 import type { ICombined } from '@/pages/accomodation/assign-rooms';
 
 import type { TLogin, TRegisterUser } from './types';
