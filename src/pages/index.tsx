@@ -1,10 +1,5 @@
-import RootLayout from '@/layouts/layout';
+import Index from '@/sections/home';
 
-const Index = () => {
-  return (
-    <RootLayout>
-      <h4>Main page</h4>
-    </RootLayout>
-  );
-};
-export default Index;
+export default function index() {
+  return <Index />;
+}
