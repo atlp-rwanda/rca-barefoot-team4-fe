@@ -6,19 +6,7 @@ import { useMutation } from 'react-query';
 
 import { Alert } from '@/components/Alert';
 import { registerAccomodation } from '@/services/api.service';
-
-import type { IAccomodation } from '.';
-
-interface IRoom {
-  roomName: String;
-  roomAmount: Number | undefined;
-  numberOfRooms: Number | undefined;
-}
-
-export interface ICombined extends IAccomodation {
-  centerImage: any;
-  rooms: IRoom[];
-}
+import type { IAccomodation, ICombined, IRoom } from '@/services/interfaces';
 
 const AssignRooms = ({
   page,
@@ -30,6 +18,7 @@ const AssignRooms = ({
   accomodationState: IAccomodation;
 }) => {
   const router = useRouter();
+  const [error, setError] = useState<string>('');
   const [rooms, setRooms] = useState<IRoom[]>([]);
   const [newRoom, setNewRoom] = useState({
     roomName: '',
@@ -80,29 +69,28 @@ const AssignRooms = ({
         (selectedImage) => {
           setCenterImage(selectedImage);
         },
-        (error) => {
-          throw error;
+        (err) => {
+          throw err;
         }
       );
     }
   };
 
-  const closeAlert = () => {
-    setAlert(false);
-  };
-
-  const handleSubmit = async () => {
-    // e.preventDefault();
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
     setAlert(true);
 
-    const dataToBeSent: ICombined = {
+    await mutation.mutateAsync({
       ...accomodationState,
       rooms,
       centerImage,
-    };
+    });
 
-    await mutation.mutateAsync(dataToBeSent);
     router.push('/');
+  };
+
+  const closeAlert = () => {
+    setAlert(false);
   };
 
   const theRooms = rooms.map((room, index) => {
@@ -119,16 +107,8 @@ const AssignRooms = ({
 
   return (
     <div className="relative mx-auto my-[2rem] w-[95%] px-0 py-[3rem] text-[#3F3F3F] shadow-md sm:w-[45%] sm:py-[4rem]">
-      {mutation.isError && alert ? (
-        <Alert
-          success={!mutation.isError}
-          handleClose={closeAlert}
-          message={
-            mutation.isError
-              ? `${mutation.error.response.data.errors[0].message}`
-              : ''
-          }
-        />
+      {error && alert ? (
+        <Alert message={error} success={false} handleClose={closeAlert} />
       ) : null}
       <form className="relative m-auto w-[90%] rounded-sm  px-[1rem] py-0 sm:px-[5rem]">
         <h1 className="py-[1rem] pl-0 pr-[1rem] text-center text-[1.5rem] font-[500] sm:pt-[2rem]">
@@ -181,8 +161,17 @@ const AssignRooms = ({
           </div>
 
           <FaPlusSquare
-            className="cursor-pointer text-4xl text-[#f20544]"
-            onClick={() => addRoom(newRoom)}
+            className="my-4 cursor-pointer text-4xl text-[#f20544] sm:my-0"
+            onClick={() => {
+              if (
+                !Object.keys(newRoom).length ||
+                Object.keys(newRoom).length === 3
+              ) {
+                setError('Make sure you added rooms.');
+              } else {
+                addRoom(newRoom);
+              }
+            }}
           />
         </div>
 
@@ -218,11 +207,28 @@ const AssignRooms = ({
         </div>
 
         <button
-          // type="submit"
           disabled={mutation.isLoading}
           type="button"
+          onClick={(e) => {
+            if (!rooms.length) {
+              setError('Make sure you added rooms.');
+            } else if (
+              (!newRoom.roomName && !newRoom.roomName.length) ||
+              !newRoom.numberOfRooms ||
+              !newRoom.roomAmount ||
+              !centerImage
+            ) {
+              setError('Input data in the fields provided.');
+            } else if (
+              typeof Number(newRoom.roomAmount) !== 'number' ||
+              typeof Number(newRoom.numberOfRooms) !== 'number'
+            ) {
+              setError('Room amount and number of rooms must be numbers.');
+            } else {
+              handleSubmit(e);
+            }
+          }}
           className="mx-0 my-[0.8rem] w-full rounded-[5px] bg-[#f20544] p-[0.5rem] text-white"
-          onClick={handleSubmit}
         >
           Submit
         </button>

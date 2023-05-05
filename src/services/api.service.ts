@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-import type { ICombined } from '@/pages/accomodation/assign-rooms';
-
+import type { ICombined } from './interfaces';
 import type { TLogin, TRegisterUser } from './types';
 
 const headers = { 'Content-type': 'application/json' };
@@ -38,9 +37,13 @@ export const loginUser = async (body: TLogin) => {
 
 export const registerAccomodation = async (body: ICombined) => {
   try {
-    const { data } = await axios.post(`${BASE_URL}/accomodation`, body, {
-      headers,
-    });
+    const { data } = await axios.post(
+      `http://localhost:3000/api/v1/accomodation/`,
+      body,
+      {
+        headers,
+      }
+    );
 
     return data;
   } catch (err: any) {

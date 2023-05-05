@@ -12,7 +12,7 @@ const AccomodationLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
 
         <section className="w-[85%]">
-          <div className="">
+          <div className="flex-1 px-10">
             <ProfileArea />
           </div>
           {children}

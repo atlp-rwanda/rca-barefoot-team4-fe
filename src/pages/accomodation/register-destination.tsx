@@ -1,10 +1,11 @@
 import type { Dispatch, SetStateAction } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 import { ImLocation } from 'react-icons/im';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Alert } from '@/components/Alert';
 import RequiredMark from '@/components/requiredMark';
-
-import type { IAccomodation } from '.';
+import type { IAccomodation } from '@/services/interfaces';
 
 const RegisterDestination = ({
   page,
@@ -17,11 +18,9 @@ const RegisterDestination = ({
   accomodationState: IAccomodation;
   setAccomodationState: Dispatch<SetStateAction<IAccomodation>>;
 }) => {
-  function handleChange(
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-  ) {
+  const [alert, setAlert] = useState(true);
+  const [error, setError] = useState<string>('');
+  function handleChange(e: any) {
     const { value } = e.target;
     setAccomodationState({
       ...accomodationState,
@@ -29,12 +28,20 @@ const RegisterDestination = ({
     });
   }
 
+  const closeAlert = () => {
+    setAlert(false);
+  };
+
   return (
     <div className="relative mx-auto my-[2rem] w-[95%] px-0 py-[4rem] text-[#3F3F3F] shadow-md sm:w-[45%]">
       <form className="relative m-auto w-[90%] rounded-sm px-[1rem] py-0 sm:px-[5rem]">
         <h1 className="pb-[1rem] pl-0 pr-[1rem] pt-[2rem] text-center text-[1.5rem] font-[500]">
           Register Destination
         </h1>
+
+        {error && alert ? (
+          <Alert message={error} handleClose={closeAlert} success={false} />
+        ) : null}
         <div className="mx-0 my-[1rem]">
           <label className="mx-0 my-[0.5rem] flex" htmlFor="dest-name">
             Destination name
@@ -50,6 +57,7 @@ const RegisterDestination = ({
             className="w-full rounded-[5px] border-[1px] border-[#e6e6e6] p-[0.3rem] focus:outline-none"
             required
           />
+          {/* <p className="my-2 text-red-default">{error}</p> */}
         </div>
 
         <div className="flex flex-col sm:flex-row sm:items-center">
@@ -120,11 +128,25 @@ const RegisterDestination = ({
             required
           />
         </div>
+
         <button
           onClick={() => {
-            setPage(page + 1);
+            if (
+              (!accomodationState.destinationName &&
+                !accomodationState.destinationName.length) ||
+              (!accomodationState.address &&
+                !accomodationState.address.length) ||
+              (!accomodationState.contact &&
+                !accomodationState.contact.length) ||
+              (!accomodationState.description &&
+                !accomodationState.description.length)
+            ) {
+              setError('Fill all the fields with *');
+            } else {
+              setPage(page + 1);
+            }
           }}
-          className="absolute right-0 px-[1rem] py-[1.5rem] text-[#f20544] underline sm:px-[5rem]"
+          className="absolute right-0 px-[2rem] py-[1.5rem] text-[#f20544] underline sm:px-[7rem]"
         >
           Next
         </button>

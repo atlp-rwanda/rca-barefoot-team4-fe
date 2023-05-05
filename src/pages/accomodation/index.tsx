@@ -1,17 +1,10 @@
 import { useState } from 'react';
 
 import AccomodationLayout from '@/layouts/accomodation/layout';
+import type { IAccomodation } from '@/services/interfaces';
 
 import AssignRooms from './assign-rooms';
 import RegisterDestination from './register-destination';
-
-export interface IAccomodation {
-  destinationName: string;
-  address: string;
-  contact: string;
-  description: string;
-  websiteUrl: string;
-}
 
 const Index = () => {
   const [page, setPage] = useState(0);
