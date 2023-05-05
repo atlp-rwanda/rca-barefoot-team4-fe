@@ -25,7 +25,7 @@
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[sass]": {
-    "editor.defaultFormatter": "syler.sass-indented"
+  "[postcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   } // Don't run prettier for files listed in .gitignore
 }

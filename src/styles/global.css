@@ -19,3 +19,10 @@ a:hover {
 .content ul {
   @apply my-6;
 }
+
+.bg--banner-img {
+  background: url("/assets/images/bgImage.png");
+  background-size: cover;
+  background-position: bottom;
+  width: 100%;
+}

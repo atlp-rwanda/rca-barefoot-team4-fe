@@ -24,7 +24,7 @@ const Sidebar = () => {
         </Link>
 
         <Link href={`/accomodation/registration`}>
-          <li className="flex items-center space-x-3 px-1 py-2  text-lg text-red-default visited:bg-red-default visited:text-white sm:px-2 sm:py-4">
+          <li className="flex items-center space-x-3 px-1 py-2  text-lg text-red-default visited:bg-red-default active:bg-red-default active:text-white sm:px-2 sm:py-4">
             <FaRegistered className="text-xl sm:text-base" />
             <span className="hidden sm:block"> Register accomodation</span>
           </li>
