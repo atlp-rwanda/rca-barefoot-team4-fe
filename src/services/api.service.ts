@@ -37,13 +37,9 @@ export const loginUser = async (body: TLogin) => {
 
 export const registerAccomodation = async (body: ICombined) => {
   try {
-    const { data } = await axios.post(
-      `http://localhost:3000/api/v1/accomodation/`,
-      body,
-      {
-        headers,
-      }
-    );
+    const { data } = await axios.post(`${BASE_URL}/accomodation/`, body, {
+      headers,
+    });
 
     return data;
   } catch (err: any) {
