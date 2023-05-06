@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import type { ICombined } from './interfaces';
 import type { TLogin, TRegisterUser } from './types';
 
 const headers = { 'Content-type': 'application/json' };
@@ -28,6 +29,18 @@ export const loginUser = async (body: TLogin) => {
     const { data } = await axios.post(`${BASE_URL}/auth/login`, body, {
       headers,
     });
+    return data;
+  } catch (err: any) {
+    throw err;
+  }
+};
+
+export const registerAccomodation = async (body: ICombined) => {
+  try {
+    const { data } = await axios.post(`${BASE_URL}/accomodation/`, body, {
+      headers,
+    });
+
     return data;
   } catch (err: any) {
     throw err;
