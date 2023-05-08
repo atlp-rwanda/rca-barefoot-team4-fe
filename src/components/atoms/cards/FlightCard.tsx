@@ -16,7 +16,7 @@ export default function FlightCard(props: any) {
       {/* image */}
       <div className="h-80 rounded-3xl bg-gray-100">
         <img
-          src="/assets/images/giraffe.png"
+          src="/assets/images/flight.jpeg"
           alt=""
           className="h-full w-full rounded-3xl object-cover"
         />
