@@ -11,3 +11,9 @@ export type TLogin = {
   email: string;
   password: string;
 };
+
+export type TTab = {
+  title: string;
+  to: React.ReactNode;
+  icon: React.ReactNode;
+};

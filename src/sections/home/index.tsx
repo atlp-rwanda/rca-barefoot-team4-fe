@@ -6,12 +6,13 @@ import { useState } from 'react';
 import { Car, Plane } from 'tabler-icons-react';
 
 import Button from '@/components/atoms/Button';
+import type { TTab } from '@/services/types';
 
 const Index = () => {
-  type TTab = {
-    title: string;
-    icon: React.ReactNode;
-  };
+  // type TTab = {
+  //   title: string;
+  //   icon: React.ReactNode;
+  // };
 
   const tabs = [
     {

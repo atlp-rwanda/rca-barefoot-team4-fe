@@ -1,12 +1,11 @@
 import { useState } from 'react';
 
-import AccomodationLayout from '@/layouts/accomodation/layout';
 import type { IAccomodation } from '@/services/interfaces';
 
 import AssignRooms from './assign-rooms';
 import RegisterDestination from './register-destination';
 
-const Index = () => {
+const RegIndex = () => {
   const [page, setPage] = useState(0);
   const [accomodationState, setAccomodationState] = useState<IAccomodation>({
     destinationName: '',
@@ -31,11 +30,7 @@ const Index = () => {
       accomodationState={accomodationState}
     />,
   ];
-  return (
-    <AccomodationLayout>
-      <div>{componentsList[page]}</div>
-    </AccomodationLayout>
-  );
+  return <div>{componentsList[page]}</div>;
 };
 
-export default Index;
+export default RegIndex;
