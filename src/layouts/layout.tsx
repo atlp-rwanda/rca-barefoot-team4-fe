@@ -10,7 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <main className="w-fit md:w-auto">
-      <section className="h-screen w-auto">
+      <section className="min-h-screen w-auto">
         <Navbar />
         {children}
       </section>

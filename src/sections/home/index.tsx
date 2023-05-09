@@ -2,10 +2,14 @@
 
 import { HomeModernIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { useMutation, useQueryClient } from 'react-query';
 import { Car, Plane } from 'tabler-icons-react';
 
 import Button from '@/components/atoms/Button';
+import { fetchFlightsFromTimeAndLocation } from '@/services/api.service';
+import type { ISearchBody } from '@/services/interfaces';
 
 const Index = () => {
   type TTab = {
@@ -36,10 +40,30 @@ const Index = () => {
     setCurrentTab(tabs[index] as TTab);
   }
 
-  // submit
+  // object to send
 
-  async function handleSubmit() {
-    alert('to integrate');
+  const [searchBody, setSearchBody] = useState<ISearchBody>({});
+
+  function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
+    setSearchBody({
+      ...searchBody,
+      [e.target.name]: e.target.value,
+    });
+  }
+  const queryClient = useQueryClient();
+
+  const flightsData = useMutation(fetchFlightsFromTimeAndLocation, {
+    onSuccess: (data) => {
+      queryClient.setQueryData('flightsFromTimeAndLocation', data);
+    },
+  });
+
+  const router = useRouter();
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    flightsData.mutateAsync(searchBody);
+    router.push('/explore');
   }
 
   return (
@@ -47,7 +71,7 @@ const Index = () => {
       <div className="w-screen space-y-5 bg-white py-5 lg:h-screen lg:px-10">
         {/* navbar */}
 
-        <div className="flex justify-between px-5 lg:h-[10vh] lg:px-0">
+        <div className="px- flex justify-between lg:h-[10vh] lg:px-0">
           <div className="flex items-center gap-2">
             <img src="/assets/images/logo-plain-red.png" alt="" />
             <h1 className="hidden font-bold capitalize text-red-default lg:block">
@@ -79,9 +103,9 @@ const Index = () => {
         </div>
 
         {/* body */}
-        <div className="relative h-[80vh] px-10 lg:h-[70vh] lg:px-0">
+        <div className="relative h-[80vh] px-5 lg:h-[70vh] lg:px-0">
           <div className="bg--banner-img flex h-[40vh] w-full items-center  justify-end rounded-xl lg:h-full lg:px-10">
-            <div className="absolute bottom-0 left-0 w-full px-5 lg:relative lg:w-1/3 lg:px-0">
+            <div className="absolute bottom-0 left-0 w-full p-3 lg:relative lg:w-1/3 lg:px-0">
               <div className="w-full rounded-2xl bg-white p-5 shadow-2xl shadow-gray-500 lg:p-10 lg:shadow-none">
                 <h1 className="text-xl font-bold text-black lg:text-3xl">
                   Where would you like to go?
@@ -117,29 +141,69 @@ const Index = () => {
 
                 {/* form */}
 
-                <form action="" className="space-y-5" onSubmit={handleSubmit}>
+                <form className="space-y-5" onSubmit={(e) => handleSubmit(e)}>
                   <div className="">
                     {/* input */}
 
-                    <div className="flex rounded-full border-2 border-gray-200 bg-white ">
-                      <input
-                        type="text"
-                        className="
-                      w-full
-                   rounded-full px-5
-                   py-4
-                   outline-none
-                  "
-                        placeholder="Where are you going?"
-                      />
-                    </div>
+                    {currentTab?.title === 'Hotels' ? (
+                      <div className="flex w-full rounded-full border-2 border-gray-200 bg-white">
+                        <input
+                          type="text"
+                          className="
+                        rounded-full px-5
+                        py-4
+                        outline-none
+                          "
+                          name="location"
+                          placeholder="Where are you going?"
+                        />
+                      </div>
+                    ) : (
+                      // location frame
+
+                      <div className="gap-5 space-y-5 text-xs lg:flex lg:space-y-0">
+                        <div className="w-full space-y-1 text-center">
+                          <div className="flex w-full rounded-full border-2 border-gray-200 bg-white">
+                            <input
+                              type="text"
+                              className="
+                                  rounded-full px-5
+                                  py-4
+                                  outline-none
+                                  "
+                              name="departure_location"
+                              defaultValue={searchBody.departure_location}
+                              placeholder="From (place)"
+                              onChange={handleInput}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="w-full space-y-1 text-center">
+                          <div className="flex w-full rounded-full border-2 border-gray-200 bg-white">
+                            <input
+                              type="text"
+                              className="
+                        rounded-full px-5
+                        py-4
+                        outline-none
+                          "
+                              placeholder="To (place)"
+                              name="arrival_location"
+                              defaultValue={searchBody.arrival_location}
+                              onChange={handleInput}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
                     {/* list of places */}
                   </div>
 
                   {/* time frame */}
                   <div className="flex gap-5 text-xs">
-                    <div className="w-full space-y-2">
+                    <div className="w-full space-y-1 text-center">
                       <label htmlFor="" className="block text-sm text-gray-600">
                         From
                       </label>
@@ -151,12 +215,13 @@ const Index = () => {
                             py-4
                             outline-none
                             "
-                          placeholder="Where are you going? text-sm"
+                          name="departure_time"
+                          onChange={handleInput}
                         />
                       </div>
                     </div>
 
-                    <div className="w-full space-y-2">
+                    <div className="w-full space-y-1 text-center">
                       <label htmlFor="" className="block text-sm text-gray-600">
                         To
                       </label>
@@ -164,11 +229,12 @@ const Index = () => {
                         <input
                           type="date"
                           className="
-      rounded-full px-5
-      py-4
-      outline-none
-      "
-                          placeholder="Where are you going? text-sm"
+                        rounded-full px-5
+                        py-4
+                        outline-none
+                          "
+                          name="arrival_time"
+                          onChange={handleInput}
                         />
                       </div>
                     </div>
@@ -178,6 +244,8 @@ const Index = () => {
                     type="submit"
                     capitalize
                     title={`search ${currentTab?.title}`}
+                    loading={flightsData.isLoading}
+                    loadingTitle={`searching ${currentTab?.title}...`}
                   />
                 </form>
               </div>
