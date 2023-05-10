@@ -49,6 +49,20 @@ export const registerAccomodation = async (body: ICombined) => {
   }
 };
 
+export const fetchAccomdations = async (searchTerm: any) => {
+  try {
+    const { data } = await axios.get(
+      `${BASE_URL}/accomodation/?term=${searchTerm}`,
+      {
+        headers,
+      }
+    );
+    return data;
+  } catch (err: any) {
+    throw err;
+  }
+};
+
 // flight services
 
 export const fetchFlightsFromTimeAndLocation = async (body: any) => {

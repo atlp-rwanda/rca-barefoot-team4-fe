@@ -8,7 +8,10 @@ import { useMutation, useQueryClient } from 'react-query';
 import { Car, Plane } from 'tabler-icons-react';
 
 import Button from '@/components/atoms/Button';
-import { fetchFlightsFromTimeAndLocation } from '@/services/api.service';
+import {
+  fetchAccomdations,
+  fetchFlightsFromTimeAndLocation,
+} from '@/services/api.service';
 import type { ISearchBody } from '@/services/interfaces';
 import type { TTab } from '@/services/types';
 
@@ -54,12 +57,23 @@ const Index = () => {
     },
   });
 
+  const accomodationData = useMutation(fetchAccomdations, {
+    onSuccess: (data) => {
+      queryClient.setQueryData('foundAccomodations', data);
+    },
+  });
+
   const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    flightsData.mutateAsync(searchBody);
-    router.push('/explore');
+    if (currentTab?.title === 'Hotels') {
+      accomodationData.mutateAsync(searchBody?.hotel);
+      router.push('/explore/accomodation');
+    } else {
+      flightsData.mutateAsync(searchBody);
+      router.push('/explore');
+    }
   }
 
   return (
@@ -145,12 +159,13 @@ const Index = () => {
                       <div className="flex w-full rounded-full border-2 border-gray-200 bg-white">
                         <input
                           type="text"
+                          onChange={handleInput}
                           className="
                         rounded-full px-5
                         py-4
                         outline-none
                           "
-                          name="location"
+                          name="hotel"
                           placeholder="Where are you going?"
                         />
                       </div>
@@ -198,43 +213,51 @@ const Index = () => {
                   </div>
 
                   {/* time frame */}
-                  <div className="flex gap-5 text-xs">
-                    <div className="w-full space-y-1 text-center">
-                      <label htmlFor="" className="block text-sm text-gray-600">
-                        From
-                      </label>
-                      <div className="flex w-full rounded-full border-2 border-gray-200 bg-white">
-                        <input
-                          type="date"
-                          className="
+                  {currentTab.title !== 'Hotels' ? (
+                    <div className="flex gap-5 text-xs">
+                      <div className="w-full space-y-1 text-center">
+                        <label
+                          htmlFor=""
+                          className="block text-sm text-gray-600"
+                        >
+                          From
+                        </label>
+                        <div className="flex w-full rounded-full border-2 border-gray-200 bg-white">
+                          <input
+                            type="date"
+                            className="
                             rounded-full px-5
                             py-4
                             outline-none
                             "
-                          name="departure_time"
-                          onChange={handleInput}
-                        />
+                            name="departure_time"
+                            onChange={handleInput}
+                          />
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="w-full space-y-1 text-center">
-                      <label htmlFor="" className="block text-sm text-gray-600">
-                        To
-                      </label>
-                      <div className="flex w-full rounded-full border-2 border-gray-200 bg-white">
-                        <input
-                          type="date"
-                          className="
+                      <div className="w-full space-y-1 text-center">
+                        <label
+                          htmlFor=""
+                          className="block text-sm text-gray-600"
+                        >
+                          To
+                        </label>
+                        <div className="flex w-full rounded-full border-2 border-gray-200 bg-white">
+                          <input
+                            type="date"
+                            className="
                         rounded-full px-5
                         py-4
                         outline-none
                           "
-                          name="arrival_time"
-                          onChange={handleInput}
-                        />
+                            name="arrival_time"
+                            onChange={handleInput}
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  ) : null}
 
                   <Button
                     type="submit"
