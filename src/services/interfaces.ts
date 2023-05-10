@@ -22,10 +22,12 @@ export interface ISearchBody {
   arrival_time?: string;
   departure_location?: string;
   arrival_location?: string;
+  hotel?: string;
 }
 
 export interface IResponse {
   success: boolean;
   message: string;
   data: any;
+  accomodations?: any;
 }
