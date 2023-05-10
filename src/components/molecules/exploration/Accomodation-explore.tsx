@@ -20,7 +20,7 @@ export default function AccomodationExplore() {
             })
           ) : (
             <div className="flex items-center rounded bg-red-50 p-10">
-              <h1 className="text-red-default">No flights found</h1>
+              <h1 className="text-red-default">No hotels found</h1>
             </div>
           )
         ) : (
